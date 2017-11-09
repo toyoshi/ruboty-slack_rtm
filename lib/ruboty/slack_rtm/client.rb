@@ -38,7 +38,7 @@ module Ruboty
         loop do
           message = @queue.deq
           if message.equal?(CONNECTION_CLOSED)
-            break
+            raise 'Slack connection is closed'
           end
           @client.send(message)
         end
